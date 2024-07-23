@@ -1,99 +1,107 @@
 import React, { useContext, useState } from "react";
-import { Button, Grid, Container, Typography, } from "@mui/material";
-import Paper from '@mui/material/Paper';
+import { Button, Grid, Container, Typography } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import { multiStepContext } from "../StepContext";
-import { styled } from "@mui/system";
 import * as Yup from "yup";
+import { Formik, Form } from "formik";
 
-const useStyles = styled((theme) => ({
-  formWrapper: {
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(8),
-  },
-}));
-
-const initialValues = {
-  file: ''
+const INITIAL_FORM_STATE = {
+  file: "",
 };
 
-const validationSchema = Yup.object().shape({
-  file: Yup.mixed().required('File is required').test(
-    'fileSize',
-    'File size too large',
-    value => value && value.size <= 1048576 // 1MB
-  ).test(
-    'fileType',
-    'Invalid file format, only PDF allowed',
-    value => value && value.type === 'application/pdf'
-  )
+const FORM_VALIDATION = Yup.object().shape({
+  file: Yup.mixed()
+    .required("File is required")
+    .test(
+      "fileSize",
+      "File size too large",
+      (value) => value && value.size <= 1048576 // 1MB
+    )
+    .test(
+      "fileType",
+      "Invalid file format, only PDF allowed",
+      (value) => value && value.type === "application/pdf"
+    ),
 });
 
 const ThirdStep = () => {
-  const classes = useStyles();
-  const { setStep, userData, setUserData, submitData } = useContext(multiStepContext);
-  const [fileName, setFileName] = useState('');
+  const { setStep, userData, setUserData, submitData } =
+    useContext(multiStepContext);
+  const [fileName, setFileName] = useState("");
 
   const handleFileUpload = (event) => {
     const myfile = event.target.files[0];
-    setFileName(myfile.name)
+    setFileName(myfile.name);
     // Process the file here, e.g., upload to server or handle locally
     console.log("Selected file:", myfile);
   };
 
   return (
-    <Grid container>
+    <Formik
+      initialValues={{ ...INITIAL_FORM_STATE }}
+      validationSchema={FORM_VALIDATION}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
       <Grid item xs={12}>
-        <Container>
-        <div className={classes.formWrapper}>
-          <Grid item xs={12}><br></br>
-            <Typography style={{ position: "absolute"}}>
-              Upload Documents
-            </Typography>
-          </Grid><br></br>
+        <Form>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography>Upload Documents</Typography>
+            </Grid>
 
-          <Grid item xs={4}>
-          <Paper >
-            <Typography variant="h6">Item 2</Typography>
-          </Paper>
+            <Grid item xs={6}>
+              <Paper>
+                <Typography variant="h5">Upload CV</Typography>
+              </Paper>
+            </Grid>
+
+            <Grid style={{ display: "flex" }} item xs={12}>
+              <input
+                accept=".pdf"
+                style={{ display: "none" }}
+                id="file-upload-button"
+                multiple={false}
+                type="file"
+                onChange={handleFileUpload}
+              />
+              <label htmlFor="file-upload-button">
+                <Button
+                  style={{ marginTop: "5px" }}
+                  variant="contained"
+                  component="span"
+                >
+                  Choose PDF File
+                </Button>
+              </label>
+              {
+                <h2 style={{ marginTop: "5px", marginLeft: "5px" }}>
+                  {" "}
+                  {fileName}
+                </h2>
+              }
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                style={{ marginRight: "5px" }}
+                variant="contained"
+                onClick={() => setStep(2)}
+                color="secondary"
+              >
+                {" "}
+                Back{" "}
+              </Button>
+              <span></span>
+              <Button variant="contained" onClick={submitData} color="success">
+                {" "}
+                Submit{" "}
+              </Button>
+            </Grid>
           </Grid>
-
-          {<h2> {fileName}</h2>}
-          <input
-            accept=".pdf"
-            style={{ display: "none" }}
-            id="file-upload-button"
-            multiple={false}
-            type="file"
-            onChange={handleFileUpload}
-          />
-          <label htmlFor="file-upload-button">
-            <Button variant="contained" component="span">
-              Upload PDF File
-            </Button>
-          </label>
-          
-        </div>
-        <br></br>
-
-        <div>
-          <Button
-            style={{ backgroundColor: "green", marginRight: "5px" }}
-            variant="contained"
-            onClick={() => setStep(2)}
-            colour="secondary"
-          >
-            {" "}
-            Back{" "}
-          </Button>
-          <span></span>
-          <Button variant="contained" onClick={submitData} colour="primary">
-            {" "}
-            Submit{" "}
-          </Button>
-        </div>
-        </Container>
+        </Form>
       </Grid>
-    </Grid>
+    </Formik>
   );
 };
 
