@@ -6,7 +6,11 @@ const DateTimePickerWrapper = ({
   name,
   ...otherProps
 }) => {
-  const [field, meta] = useField(name);
+  const [field, meta, helpers] = useField(name);
+
+  const handleChange = (date) => {
+    helpers.setValue(date);
+  };
 
   const configDateTimePicker = {
     ...field,
@@ -27,6 +31,7 @@ const DateTimePickerWrapper = ({
 
   return (
       <TextField
+      onChange={(e) => handleChange(e.target.value)}
       {...configDateTimePicker}
     />
    

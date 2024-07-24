@@ -16,7 +16,11 @@ import { useField, useFormikContext } from "formik";
 
 const SelectWrapper = ({ name, label, options, ...otherProps }) => {
   const { setFieldValue } = useFormikContext();
-  const [field, meta] = useField(name);
+  const [field, meta, helpers] = useField(name);
+
+  const handleChange = (e) => {
+    helpers.setValue(e.target.value);
+  };
 
  
   const configSelect = {
@@ -33,7 +37,7 @@ const SelectWrapper = ({ name, label, options, ...otherProps }) => {
   }
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth onChange={handleChange}>
       <InputLabel id={`LabelFor${name}`}>{label}</InputLabel>
       <Select
         labelId={`LabelFor${name}`}

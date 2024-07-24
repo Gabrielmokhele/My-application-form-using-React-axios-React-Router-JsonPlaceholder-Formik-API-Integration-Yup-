@@ -1,62 +1,64 @@
 import React, { useContext } from "react";
-import { Button, Typography, Grid, Container } from "@mui/material";
+import { Button, Typography, Grid} from "@mui/material";
 import { multiStepContext } from "../StepContext";
 import { Formik, Form, FieldArray } from "formik";
 import TextfieldWrapper from "./FormUI/TextfieldWrapper";
 import DateTimePicker from "./FormUI/DateTimePicker";
 import * as Yup from "yup";
 
-const INITIAL_FORM_STATE = {
-  experiences: {
-    employer: "",
-    position: "",
-    startDate: "",
-    endDate: "",
-    roleDescription: "",
-  },
-  educations: {
-    institution: "",
-    qualification: "",
-    startDate1: "",
-    endDate2: "",
-    description: "",
-  },
-};
-
-const FORM_VALIDATION = Yup.object().shape({
-  experiences: Yup.array().of(
-    Yup.object().shape({
-      employer: Yup.string().required("required"),
-      position: Yup.string(),
-      startDate: Yup.date(),
-      endDate: Yup.date(),
-      roleDescription: Yup.string(),
-    })
-  ),
-  educations: Yup.array().of(
-    Yup.object().shape({
-      institution: Yup.string().required("required"),
-      qualification: Yup.string(),
-      startDate1: Yup.date(),
-      endDate2: Yup.date(),
-      description: Yup.string(),
-    })
-  ),
-});
-
 const SecondStep = () => {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
 
+  const handleSubmit = (values) => {
+    console.log(values);
+    // Handle form submission logic
+  };
+
+  const INITIAL_FORM_STATE ={
+    experiences: [{
+      employer: userData.employer || "",
+      position:  userData.position || "",
+      startDate:  userData.startDate || "",
+      endDate:  userData.endDate || "",
+      roleDescription:  userData.roleDescription || "",
+    }],
+    educations: [{
+      institution:  userData.institution || "",
+      qualification:  userData.qualification || "",
+      startDate1:  userData.startDate1 || "",
+      endDate1:  userData.endDate1 || "",
+      description:  userData.description || "",
+    }],
+  } 
+
+
   return (
     <Formik
-      initialValues={{
-        experiences: [INITIAL_FORM_STATE],
-        educations: [INITIAL_FORM_STATE],
-      }}
-      validationSchema={FORM_VALIDATION}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
+     initialValues = {{
+      experiences: userData.experiences || [...INITIAL_FORM_STATE.experiences], 
+      educations: userData.educations || [...INITIAL_FORM_STATE.educations], 
+     }}    
+    validationSchema = {Yup.object().shape({
+      experiences: Yup.array().of(
+        Yup.object().shape({
+          employer: Yup.string().required("required"),
+          position: Yup.string(),
+          startDate: Yup.date(),
+          endDate: Yup.date(),
+          roleDescription: Yup.string(),
+        })
+      ),
+      educations: Yup.array().of(
+        Yup.object().shape({
+          institution: Yup.string().required("required"),
+          qualification: Yup.string(),
+          startDate1: Yup.date(),
+          endDate1: Yup.date(),
+          description: Yup.string(),
+        })
+      ),
+    })}
+      onSubmit={handleSubmit}
     >
       {({ values }) => (
         <Form>
@@ -75,12 +77,6 @@ const SecondStep = () => {
                           name={`experiences.${index}.employer`}
                           label="Employer"
                           value={values.experiences[index].employer}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              employer: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -90,12 +86,6 @@ const SecondStep = () => {
                           name={`experiences.${index}.position`}
                           label="Position"
                           value={values.experiences[index].position}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              position: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -106,12 +96,6 @@ const SecondStep = () => {
                           name={`experiences.${index}.startDate`}
                           label="Start Date"
                           value={values.experiences[index].startDate}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              startDate: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -121,12 +105,6 @@ const SecondStep = () => {
                           name={`experiences.${index}.endDate`}
                           label="End Date"
                           value={values.experiences[index].endDate}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              endDate: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -136,12 +114,6 @@ const SecondStep = () => {
                           name={`experiences.${index}.roleDescription`}
                           label="Role Description"
                           value={values.experiences[index].roleDescription}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              roleDescription: e.target.value,
-                            })
-                          }
                           multiline={true}
                           rows={9}
                           variant="filled"
@@ -160,7 +132,13 @@ const SecondStep = () => {
                           style={{marginLeft: "5px"}}
                           variant="contained"
                           color="primary"
-                          onClick={() => push(INITIAL_FORM_STATE)}
+                          onClick={() => push({
+                            employer: "",
+                            position: "",
+                            startDate: "",
+                            endDate: "",
+                            roleDescription: "",
+                          })}
                         >
                           Add
                         </Button>
@@ -171,7 +149,7 @@ const SecondStep = () => {
               </div>
             )}
           </FieldArray>
-
+          <br></br>
           <FieldArray name="educations">
             {({ push, remove }) => (
               <div>
@@ -189,12 +167,6 @@ const SecondStep = () => {
                           name={`educations.${index}.institution`}
                           label="Institution"
                           value={values.educations[index].institution}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              institution: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -204,12 +176,6 @@ const SecondStep = () => {
                           name={`educations.${index}.qualification`}
                           label="Qualification"
                           value={values.educations[index].qualification}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              qualification: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -219,12 +185,6 @@ const SecondStep = () => {
                           name={`educations.${index}.startDate1`}
                           label="Start Date"
                           value={values.educations[index].startDate1}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              startDate1: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -234,12 +194,6 @@ const SecondStep = () => {
                           name={`educations.${index}.endDate1`}
                           label="End Date"
                           value={values.educations[index].endDate1}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              endDate1: e.target.value,
-                            })
-                          }
                           variant="filled"
                           color="secondary"
                         />
@@ -250,12 +204,6 @@ const SecondStep = () => {
                           name={`educations.${index}.description`}
                           label="Description"
                           value={values.educations[index].description}
-                          onChange={(e) =>
-                            setUserData({
-                              ...userData,
-                              description: e.target.value,
-                            })
-                          }
                           multiline={true}
                           rows={9}
                           variant="filled"
@@ -274,7 +222,13 @@ const SecondStep = () => {
                           style={{marginLeft: "5px"}}
                           variant="contained"
                           color="primary"
-                          onClick={() => push(INITIAL_FORM_STATE)}
+                          onClick={() => push({
+                            institution: "",
+                            qualification: "",
+                            startDate1: "",
+                            endDate1: "",
+                            description: "",
+                          })}
                         >
                           Add
                         </Button>
@@ -286,23 +240,30 @@ const SecondStep = () => {
             )}
           </FieldArray>
           <br></br>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+        
+          >
+            SAVE
+          </Button>
 
           <Button
-            style={{  marginRight: "5px" }}
+            sx={{ ml: 2}}
             variant="contained"
             onClick={() => setStep(1)}
             color="secondary"
           >
-            {" "}
-            Back{" "}
+            Back
           </Button>
           <Button
+            sx={{ ml: 2}}
             variant="contained"
             onClick={() => setStep(3)}
             color="success"
           >
-            {" "}
-            Next{" "}
+            Next
           </Button>
         </Form>
       )}

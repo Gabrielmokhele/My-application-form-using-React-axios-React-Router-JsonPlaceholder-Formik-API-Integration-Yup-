@@ -7,12 +7,17 @@ const TextfieldWrapper = ({
     ...otherProps
 }) => {
 
-    const [field, meta] = useField(name);
+    const [field, meta, helpers] = useField(name);
+
+    const handleChange = (e) => {
+        helpers.setValue(e.target.value);
+      };
 
     const configTextfield = {
         ...field,
         ...otherProps,
         variant: 'outlined',
+        
     };
 
     if (meta && meta.touched && meta.error) {
@@ -21,8 +26,9 @@ const TextfieldWrapper = ({
     }
 
     return (
-        <TextField fullWidth {...configTextfield}></TextField>
+        <TextField onChange = {handleChange} fullWidth {...configTextfield}></TextField>
     );
 };
 
 export default TextfieldWrapper;
+

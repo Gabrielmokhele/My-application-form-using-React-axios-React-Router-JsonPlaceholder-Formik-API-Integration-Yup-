@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Button, Grid, Container, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { multiStepContext } from "../StepContext";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 
 const INITIAL_FORM_STATE = {
-  file: "",
+  file: userData.file || "",
 };
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -28,17 +28,20 @@ const ThirdStep = () => {
   const { setStep, userData, setUserData, submitData } =
     useContext(multiStepContext);
   const [fileName, setFileName] = useState("");
+  
 
   const handleFileUpload = (event) => {
     const myfile = event.target.files[0];
     setFileName(myfile.name);
-    // Process the file here, e.g., upload to server or handle locally
+    setUserData({ ...userData, file: myfile });
     console.log("Selected file:", myfile);
   };
 
+
+
   return (
     <Formik
-      initialValues={{ ...INITIAL_FORM_STATE }}
+      initialValues={{INITIAL_FORM_STATE }}
       validationSchema={FORM_VALIDATION}
       onSubmit={(values) => {
         console.log(values);
@@ -94,8 +97,7 @@ const ThirdStep = () => {
               </Button>
               <span></span>
               <Button variant="contained" onClick={submitData} color="success">
-                {" "}
-                Submit{" "}
+                Submit
               </Button>
             </Grid>
           </Grid>
