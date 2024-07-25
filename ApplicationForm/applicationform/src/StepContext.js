@@ -5,10 +5,13 @@ export const multiStepContext = React.createContext();
 const StepContext = () => {
     const [currentStep,setStep] = useState(1);
     const [userData, setUserData] = useState([]);
-    const [FinalData, setFinalData] = useState();
+    const [FinalData, setFinalData] = useState([]);
     
     const submitData = () => {
-      setFinalData(userData);
+      setFinalData(FinalData=> [...FinalData]);
+      console.log(userData)
+      setUserData('');
+      setStep(1);
     }
 
   return (

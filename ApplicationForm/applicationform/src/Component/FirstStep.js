@@ -34,20 +34,11 @@ const FirstStep = () => {
     fetchCountries();
   }, []);
 
-  // const handleSubmit = async (values) => {
-  //   console.log(values);
-  //   try {
-  //     const response = await axios.post(values);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   const handleSubmit = (values) => {
-    console.log(values);
-    // Handle form submission logic
+    
+    setUserData(values);
   };
+  console.log(userData);
 
   return (
     <Formik

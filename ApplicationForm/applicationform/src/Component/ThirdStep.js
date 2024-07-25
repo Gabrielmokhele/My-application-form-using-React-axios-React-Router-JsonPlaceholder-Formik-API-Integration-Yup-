@@ -4,10 +4,10 @@ import Paper from "@mui/material/Paper";
 import { multiStepContext } from "../StepContext";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
+import {Link, BrowserRouter } from "react-router-dom";
+import axios from "axios";
 
-const INITIAL_FORM_STATE = {
-  file: userData.file || "",
-};
+const LOCAL_API_URL = "http://localhost:3000/posts";
 
 const FORM_VALIDATION = Yup.object().shape({
   file: Yup.mixed()
@@ -25,27 +25,57 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 const ThirdStep = () => {
-  const { setStep, userData, setUserData, submitData } =
-    useContext(multiStepContext);
+  const { setStep, userData, setUserData, submitData } = useContext(multiStepContext);
   const [fileName, setFileName] = useState("");
   
 
   const handleFileUpload = (event) => {
     const myfile = event.target.files[0];
     setFileName(myfile.name);
-    setUserData({ ...userData, file: myfile });
-    console.log("Selected file:", myfile);
+    setUserData({...userData,myfile})
+    
+  
   };
+  
+
+  const downloadFile = () => {
+    if (!userData.file) {
+      console.error('No file uploaded');
+      return;
+    }
+
+    const file = userData.file;
+    const url = window.URL.createObjectURL(new Blob([file]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', file.name);
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
+  };
+
+  
+  const handleSubmit = async (values) => {
+    try {
+      const response = await axios.post(`${LOCAL_API_URL}`,{ ...userData, ...values });
+      setUserData({ ...userData, ...values });
+      console.log('Post successful:', response.data);
+  
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
+  console.log(userData);
 
 
 
   return (
     <Formik
-      initialValues={{INITIAL_FORM_STATE }}
-      validationSchema={FORM_VALIDATION}
-      onSubmit={(values) => {
-        console.log(values);
+      initialValues = {{
+        file: userData.file || "",
       }}
+      validationSchema={FORM_VALIDATION}
+      onSubmit={handleSubmit}
     >
       <Grid item xs={12}>
         <Form>
@@ -79,10 +109,10 @@ const ThirdStep = () => {
                 </Button>
               </label>
               {
-                <h2 style={{ marginTop: "5px", marginLeft: "5px" }}>
-                  {" "}
+                <BrowserRouter><Link onClick={downloadFile} to="/"><h2 style={{ marginTop: "5px", marginLeft: "5px" }}>
+          
                   {fileName}
-                </h2>
+                </h2></Link></BrowserRouter>
               }
             </Grid>
             <Grid item xs={12}>

@@ -10,9 +10,11 @@ const SecondStep = () => {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
 
   const handleSubmit = (values) => {
-    console.log(values);
+    setUserData({...userData, values});
+    
     // Handle form submission logic
   };
+  console.log(userData);
 
   const INITIAL_FORM_STATE ={
     experiences: [{
