@@ -65,6 +65,7 @@ const ThirdStep = () => {
       console.error('Error submitting data:', error);
     }
   };
+  // setUserData((prev) => [...prev, userData]);
   console.log(userData);
 
 
@@ -126,7 +127,7 @@ const ThirdStep = () => {
                 Back{" "}
               </Button>
               <span></span>
-              <Button variant="contained" onClick={submitData} color="success">
+              <Button type= "submit" variant="contained" onClick={submitData} color="success">
                 Submit
               </Button>
             </Grid>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import App from './App';
+import axios from 'axios';
 
 export const multiStepContext = React.createContext();
 const StepContext = () => {
@@ -7,12 +8,19 @@ const StepContext = () => {
     const [userData, setUserData] = useState([]);
     const [FinalData, setFinalData] = useState([]);
     
-    const submitData = () => {
+    const LOCAL_API_URL = "http://localhost:3000/posts";
+    const submitData = async () => {
+      try {
+        const response = await axios.post(`${LOCAL_API_URL}`,{ ...userData, });
       setFinalData(FinalData=> [...FinalData]);
       console.log(userData)
       setUserData('');
       setStep(1);
+    } catch (error) {
+      console.error('Error submitting data:', error);
     }
+  };
+    
 
   return (
     <div>
