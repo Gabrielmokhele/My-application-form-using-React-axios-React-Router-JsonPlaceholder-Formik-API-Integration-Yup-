@@ -1,6 +1,5 @@
 {
   "posts": [
-    {},
     {
       "id": "e32e",
       "firstName": "Gabriel",
@@ -36,10 +35,10 @@
       "myfile": {}
     },
     {
-      "id": "681e",
+      "id": "0c3c",
       "firstName": "Gabriel",
       "lastName": "Mokhele",
-      "dateOfBirth": "2024-07-03",
+      "dateOfBirth": "2024-07-11",
       "email": "thato.mokhele@cdasolutions.co.za",
       "phone": "0673102522",
       "addressLine1": "14A Potgieter Road",
@@ -50,20 +49,27 @@
       "values": {
         "experiences": [
           {
-            "employer": "zhxfb",
-            "position": "fbhzsf",
-            "startDate": "",
-            "endDate": "",
-            "roleDescription": ""
+            "employer": "zvzogvndfmgv",
+            "position": "dmapsfmdspf",
+            "startDate": "2024-07-10",
+            "endDate": "2024-07-23",
+            "roleDescription": "akfbadsonsdhafhn"
           }
         ],
         "educations": [
           {
-            "institution": "xgnf",
-            "qualification": "znvgbfzxb",
-            "startDate1": "",
-            "endDate1": "",
-            "description": ""
+            "institution": "afbauehgbasdf",
+            "qualification": "dsbfndasfnadsjf",
+            "startDate1": "2024-07-11",
+            "endDate1": "2024-07-29",
+            "description": "afkhddnsalufbn"
+          },
+          {
+            "institution": "alshdfuaoedhfn",
+            "qualification": "audsfhnb8eswdhn",
+            "startDate1": "2024-07-04",
+            "endDate1": "2024-07-20",
+            "description": "askfbasuhfb"
           }
         ]
       },

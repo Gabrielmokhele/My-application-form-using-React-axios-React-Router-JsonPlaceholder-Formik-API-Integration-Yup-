@@ -11,8 +11,7 @@ const SecondStep = () => {
 
   const handleSubmit = (values) => {
     setUserData({...userData, values});
-    
-    // Handle form submission logic
+ 
   };
   console.log(userData);
 

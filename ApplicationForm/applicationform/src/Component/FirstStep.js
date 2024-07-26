@@ -35,7 +35,6 @@ const FirstStep = () => {
   }, []);
 
   const handleSubmit = (values) => {
-    
     setUserData(values);
   };
   console.log(userData);

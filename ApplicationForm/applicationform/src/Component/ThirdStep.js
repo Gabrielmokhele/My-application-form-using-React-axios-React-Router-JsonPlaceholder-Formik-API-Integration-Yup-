@@ -5,9 +5,8 @@ import { multiStepContext } from "../StepContext";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import {Link, BrowserRouter } from "react-router-dom";
-import axios from "axios";
 
-const LOCAL_API_URL = "http://localhost:3000/posts";
+
 
 const FORM_VALIDATION = Yup.object().shape({
   file: Yup.mixed()
@@ -55,17 +54,9 @@ const ThirdStep = () => {
   };
 
   
-  const handleSubmit = async (values) => {
-    try {
-      const response = await axios.post(`${LOCAL_API_URL}`,{ ...userData, ...values });
+  const handleSubmit = (values) => {
       setUserData({ ...userData, ...values });
-      console.log('Post successful:', response.data);
-  
-    } catch (error) {
-      console.error('Error submitting data:', error);
-    }
-  };
-  // setUserData((prev) => [...prev, userData]);
+  }
   console.log(userData);
 
 
