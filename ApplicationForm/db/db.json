@@ -74,6 +74,163 @@
         ]
       },
       "myfile": {}
+    },
+    {
+      "id": "9e58",
+      "firstName": "gfjfj",
+      "lastName": "jfhg",
+      "dateOfBirth": "2024-07-13",
+      "email": "gabrielmokhele1999@gmail.com",
+      "phone": "99758465",
+      "addressLine1": "tfhdfgfgh",
+      "addressLine2": "gfjfdjh",
+      "city": "sthjstyjh",
+      "province": "fghfsgj",
+      "country": "Antarctica",
+      "values": {
+        "experiences": [
+          {
+            "employer": "ghdjdtyj",
+            "position": "ghxjxghjxg",
+            "startDate": "2024-07-12",
+            "endDate": "2024-07-10",
+            "roleDescription": "xhgjc"
+          }
+        ],
+        "educations": [
+          {
+            "institution": "xhgkjgj",
+            "qualification": "xhgkjxgh",
+            "startDate1": "2024-07-10",
+            "endDate1": "2024-07-24",
+            "description": "xhfgj"
+          },
+          {
+            "institution": "rtshugrtsht",
+            "qualification": "hgfhstrh",
+            "startDate1": "2024-07-25",
+            "endDate1": "2024-07-10",
+            "description": "tdyhsrthsrt"
+          }
+        ]
+      },
+      "myfile": {}
+    },
+    {
+      "id": "229d",
+      "firstName": "Zanele",
+      "lastName": "Mokhele",
+      "dateOfBirth": "2001-02-03",
+      "email": "zanelemokhele@gmail.com",
+      "phone": "0817793699",
+      "addressLine1": "1224 Lebanon",
+      "addressLine2": "",
+      "city": "Mabopane",
+      "province": "Gauteng",
+      "country": "South Africa",
+      "values": {
+        "experiences": [
+          {
+            "employer": "Abel Motswane",
+            "position": "Teacher Assistant",
+            "startDate": "2024-07-04",
+            "endDate": "2024-07-30",
+            "roleDescription": "I was teaching children maths"
+          }
+        ],
+        "educations": [
+          {
+            "institution": "Lesolang",
+            "qualification": "Grade 12",
+            "startDate1": "2024-07-25",
+            "endDate1": "2024-07-31",
+            "description": "Subjects: Maths accounting History"
+          },
+          {
+            "institution": "UNISA",
+            "qualification": "LLB",
+            "startDate1": "2024-07-18",
+            "endDate1": "2024-07-29",
+            "description": "Grade 70%: Cum Laude majoring in criminal law"
+          }
+        ]
+      },
+      "myfile": {}
+    },
+    {
+      "id": "6d53",
+      "firstName": "Bob",
+      "lastName": "Kenan",
+      "dateOfBirth": "2024-07-02",
+      "email": "bobkenan@gmail.com",
+      "phone": "076555444",
+      "addressLine1": "12 Grydon Road",
+      "addressLine2": "The Yard Estate",
+      "city": "Johannesburg",
+      "province": "Gauteng",
+      "country": "South Africa",
+      "values": {
+        "experiences": [
+          {
+            "employer": "CTG EYIL",
+            "position": "Full Stack developer",
+            "startDate": "2023-06-07",
+            "endDate": "2024-07-30",
+            "roleDescription": "Developed react.js apps and facilitated migration to postgres DB"
+          }
+        ],
+        "educations": [
+          {
+            "institution": "University of Johannesburg",
+            "qualification": "BSc Computer Sciences",
+            "startDate1": "2021-01-01",
+            "endDate1": "2023-12-30",
+            "description": "Major in Statistics and Data Science\nCum Laude 75%"
+          }
+        ]
+      },
+      "myfile": {}
+    },
+    {
+      "id": "4594",
+      "firstName": "Gabriel",
+      "lastName": "Mokhele",
+      "dateOfBirth": "2024-07-11",
+      "email": "gabrielmokhele1999@gmail.com",
+      "phone": "0817793699",
+      "addressLine1": "12 Grydon Road",
+      "addressLine2": "The Yard Estate",
+      "city": "Mabopane",
+      "province": "Gauteng",
+      "country": "South Africa",
+      "values": {
+        "experiences": [
+          {
+            "employer": "CTG EYIL",
+            "position": "Full Stack developer",
+            "startDate": "2024-07-04",
+            "endDate": "2024-07-26",
+            "roleDescription": "Developed a Python App"
+          },
+          {
+            "employer": "Dischem Phamarcy",
+            "position": "Data Analyst",
+            "startDate": "2024-07-01",
+            "endDate": "2024-07-11",
+            "roleDescription": "Acted as a receiving consultant"
+          }
+        ],
+        "educations": [
+          {
+            "institution": "University of Johannesburg",
+            "qualification": "BSc Computer Sciences",
+            "startDate1": "2020-01-01",
+            "endDate1": "2023-12-22",
+            "description": "Cum Laude 78%\nSpecialized in statistics and mathematics"
+          }
+        ]
+      },
+      "myfile": {}
     }
   ]
 }
