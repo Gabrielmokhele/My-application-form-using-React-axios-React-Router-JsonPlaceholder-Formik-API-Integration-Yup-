@@ -77,7 +77,7 @@ const SecondStep = () => {
                         <TextfieldWrapper
                           name={`experiences.${index}.employer`}
                           label="Employer"
-                          // value={values.experiences[index].employer}
+                          
                           variant="filled"
                           color="secondary"
                         />
@@ -86,7 +86,6 @@ const SecondStep = () => {
                         <TextfieldWrapper
                           name={`experiences.${index}.position`}
                           label="Position"
-                          // value={values.experiences[index].position}
                           variant="filled"
                           color="secondary"
                         />
@@ -96,7 +95,6 @@ const SecondStep = () => {
                         <DateTimePicker
                           name={`experiences.${index}.startDate`}
                           label="Start Date"
-                          // value={values.experiences[index].startDate}
                           variant="filled"
                           color="secondary"
                         />
@@ -105,7 +103,6 @@ const SecondStep = () => {
                         <DateTimePicker
                           name={`experiences.${index}.endDate`}
                           label="End Date"
-                          // value={values.experiences[index].endDate}
                           variant="filled"
                           color="secondary"
                         />
@@ -114,7 +111,6 @@ const SecondStep = () => {
                         <TextfieldWrapper
                           name={`experiences.${index}.roleDescription`}
                           label="Role Description"
-                          // value={values.experiences[index].roleDescription}
                           multiline={true}
                           rows={9}
                           variant="filled"
@@ -167,7 +163,6 @@ const SecondStep = () => {
                         <TextfieldWrapper
                           name={`educations.${index}.institution`}
                           label="Institution"
-                          // value={values.educations[index].institution}
                           variant="filled"
                           color="secondary"
                         />
@@ -176,7 +171,6 @@ const SecondStep = () => {
                         <TextfieldWrapper
                           name={`educations.${index}.qualification`}
                           label="Qualification"
-                          // value={values.educations[index].qualification}
                           variant="filled"
                           color="secondary"
                         />
@@ -185,7 +179,6 @@ const SecondStep = () => {
                         <DateTimePicker
                           name={`educations.${index}.startDate1`}
                           label="Start Date"
-                          // value={values.educations[index].startDate1}
                           variant="filled"
                           color="secondary"
                         />
@@ -194,7 +187,6 @@ const SecondStep = () => {
                         <DateTimePicker
                           name={`educations.${index}.endDate1`}
                           label="End Date"
-                          // value={values.educations[index].endDate1}
                           variant="filled"
                           color="secondary"
                         />
@@ -204,7 +196,6 @@ const SecondStep = () => {
                         <TextfieldWrapper
                           name={`educations.${index}.description`}
                           label="Description"
-                          // value={values.educations[index].description}
                           multiline={true}
                           rows={9}
                           variant="filled"

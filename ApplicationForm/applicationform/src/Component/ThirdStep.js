@@ -14,7 +14,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .test(
       "fileSize",
       "File size too large",
-      (value) => value && value.size <= 1048576 // 1MB
+      (value) => value && value.size <= 1048576 
     )
     .test(
       "fileType",
@@ -76,7 +76,6 @@ const ThirdStep = () => {
               <Typography>Upload Documents</Typography>
             </Grid>
 
-<<<<<<< Updated upstream
             <Grid item xs={6}>
               <Paper>
                 <Typography variant="h5">Upload CV</Typography>
@@ -125,49 +124,6 @@ const ThirdStep = () => {
             </Grid>
           </Grid>
         </Form>
-=======
-          <Grid item xs={6}>
-          <Paper >
-            <Typography variant="h6">Upload CV</Typography>
-          </Paper>
-          </Grid>  
-          <Grid item xs={6} style={{display: "flex"}}>        
-          <input
-            accept=".pdf"
-            style={{ display: "none" }}
-            id="file-upload-button"
-            multiple={false}
-            type="file"
-            onChange={handleFileUpload}
-          />
-          <label htmlFor="file-upload-button">
-            <Button style={{ marginTop: "5px"}} variant="contained" component="span">
-              Upload PDF File
-            </Button>
-          </label>
-          {<h2 style={{display: "flex", marginLeft: "10px", marginTop: "5px"}}> {fileName}</h2>}
-          </Grid>
-        </div>
-        <br></br>
-
-        <div>
-          <Button
-            style={{ backgroundColor: "green", marginRight: "5px" }}
-            variant="contained"
-            onClick={() => setStep(2)}
-            colour="secondary"
-          >
-            {" "}
-            Back{" "}
-          </Button>
-          <span></span>
-          <Button variant="contained" onClick={submitData} colour="primary">
-            {" "}
-            Submit{" "}
-          </Button>
-        </div>
-        </Container>
->>>>>>> Stashed changes
       </Grid>
     </Formik>
   );
